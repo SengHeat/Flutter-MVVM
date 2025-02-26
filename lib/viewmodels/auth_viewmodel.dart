@@ -1,11 +1,7 @@
 
 
-
-import 'package:e_commerce_mvvm/data/api/api_client.dart';
-import 'package:e_commerce_mvvm/data/api/api_service.dart';
 import 'package:e_commerce_mvvm/data/models/api_model/user_model.dart';
 import 'package:e_commerce_mvvm/data/repositories/auth_repository.dart';
-import 'package:e_commerce_mvvm/helper/token_helper.dart';
 import 'package:e_commerce_mvvm/utils/loading_dialog.dart';
 import 'package:e_commerce_mvvm/views/user_profile_screen.dart';
 import 'package:get/get.dart';
@@ -13,7 +9,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthViewModel extends GetxController {
-  DioClient? dioClient;
   final AuthRepository authRepository;
   late final SharedPreferences sharedPreferences;
   AuthViewModel({required this.authRepository, required this.sharedPreferences});

@@ -1,10 +1,7 @@
 
 
-import 'package:dio/dio.dart';
-import 'package:e_commerce_mvvm/data/api/api_client.dart';
 import 'package:e_commerce_mvvm/data/api/api_service.dart';
 import 'package:e_commerce_mvvm/data/models/api_model/user_model.dart';
-import 'package:e_commerce_mvvm/data/models/response/%20base/api_response.dart';
 import 'package:e_commerce_mvvm/helper/token_helper.dart';
 import 'package:e_commerce_mvvm/utils/app_constants.dart';
 import 'package:image_picker/image_picker.dart';
@@ -75,43 +72,4 @@ class AuthRepository {
       throw Exception("Error during login: $error");
     });
   }
-  //
-  // Future<UserModel> loginWithGoogle() async {
-  //
-  // }
-
-
-  // Future<String> registerUser({
-  //   required String name,
-  //   required String email,
-  //   required String password,
-  //   File? profile,
-  // }) async {
-  //   var _formData = FormData.fromMap({
-  //     "name": name,
-  //     "email": email,
-  //     "password": password,
-  //     "password_confirmation": password,
-  //     "profile":
-  //     profile != null ? await MultipartFile.fromFile(profile.name) : null,
-  //   });
-  //   final response = await dio.post(
-  //     "$baseUrl/auth/register",
-  //     data: _formData,
-  //     options: Options(
-  //       headers: {"Accept": "application/json"},
-  //       followRedirects: false,
-  //       validateStatus: (status) {
-  //         return status! < 500;
-  //       },
-  //     ),
-  //   );
-  //   print(response.data);
-  //   if (response.statusCode == 200) {
-  //     return "Success register user";
-  //   } else {
-  //     throw Exception("Failed to register user");
-  //   }
-  // }
-
 }

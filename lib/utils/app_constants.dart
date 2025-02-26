@@ -21,6 +21,7 @@ class AppConstants {
   // static String baseURL = "https://pvt-portal.scholarar.com";
   //static String baseURL =  "https://portal.scholarar.com";
   static String baseURL = "https://staging-portal.scholarar.com";
+  static const String getAllProduct = "/api/books";
   static const String getBookStore = "/api/books";
   static const String testVideoAPI = "/api/categories";
   static const String register = "/api/v1/register";
@@ -41,46 +42,6 @@ class AppConstants {
 
   static const String token = "token";
   static const String tranId = "tran_id";
-  static const String logo = "assets/images/logo.jpg";
-  static const String male = "assets/images/empty-profile.png";
-  static const String female = "assets/images/empty-profile.png";
-  static const String languageCode = "language_code";
-  static const String countryCode = "country_code";
-  static const String isSelectNumber = "isSelectNumber";
-  static const String testCourseAPI = "/api/courses";
-  static const String getScholarship = "/api/scholarships";
-  static const String getScholarshipMatch = "/api/matched-scholarships";
-  static const String getScholarshipList = "/api/scholarships?degree_id=";
-  static const String getFavoriteScholarship = "/api/favorite-scholarship";
-  static const String getDegrees = "/api/degrees";
-  static const String getTypes = "/api/types";
-  static const String getMajors = "/api/majors";
-  static const String getPresetMajors = "/api/preset-majors";
-  static const String getNationalitie = "/api/nationalities";
-  static const String getHomeData = "/api/v1/?code=search-page";
-  static const String getCategoryFilter = "";
-  static const String getNotification = "/api/notification";
-  static const String getHelpSupport = "/api/links";
-  static const String getDropdown = "/api/dropdown";
-  static const String getFilter = "/api/search-scholarships";
-  static const String slideShow = "/api/slide";
-  static const String getScholarshipNotification = "/api/notification";
-  static const String getMatchingNotification = "/api/notification/matching";
-  static const String checkStatusUpdateStudentInfo = "/api/student-info/check-limit";
-  static const String getUpdaterVersion = "/api/versions";
-  static const String getNotificationCount = "/api/notification/unread/count";
-  static const String unreadNotification = "/api/notification/mark/update";
-  static const String unreadEachNotification = "/api/notification/mark/each-home";
-  static const String getEachNotificationList = "/api/notification/home/details/";
-  static const String getLimitDetailScholarship = "/api/scholarships-limit";
-  static const String getLimitFilter = "/api/search-scholarships-limit";
-  static const String getCommentScholarship = "/api/scholarship-comment";
-  static const String getEventList = "/api/saved-filter";
-  static const String getScholarshipEventList = "/api/saved-filter-result?saved_filter_id";
-  static const String viewScholarship = "/api/scholarship/view";
-  static const String getStudentSlide = "/api/galleries?type=student";
-  static const String getBenefitSlide = "/api/galleries?type=benefied";
-  static const String getUserPremiumSlide = "/api/user-premium";
 
   // auth
   static const String phoneSignIn = "";

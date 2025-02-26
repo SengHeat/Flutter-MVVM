@@ -114,13 +114,6 @@ class UserModel {
     return data;
   }
 
-  Map<String, dynamic> toJsonLogin() {
-    return {
-      "email": email,
-      "password": password,
-    };
-  }
-
   Map<String, String> toJsonRegister() {
     return {
       "firstname": firstName ?? "",
@@ -128,6 +121,50 @@ class UserModel {
       "email": email ?? "",
       "password": password ?? "",
       "confirm_password": confirmPassword ?? "",
-   };
+      "device_token": "",
+    };
   }
+
+  Map<String, dynamic> toJsonLogin() {
+    return {
+      "email": email,
+      "password": password,
+      "device_token": "",
+    };
+  }
+
+   Map<String, dynamic> toJsonAppleLogin() {
+    return {
+      "identity_token": "",
+      "device_token": "",
+    };
+  }
+
+  Map<String, dynamic> toJsonGoogleLogin() {
+    return {
+      "access_token": "",
+      "device_token": "",
+    };
+  }
+
+  Map<String, dynamic> toJsonFacebookLogin() {
+    return {
+      "access_token": "",
+      "device_token": "",
+    };
+  }
+
+  Map<String, dynamic> toJsonVerifyOTP() {
+    return {
+      "email": email,
+      "otp": ""
+    };
+  }
+
+   Map<String, dynamic> toJsonRequestOTP() {
+    return {
+      "email": email,
+    };
+  }
+
 }

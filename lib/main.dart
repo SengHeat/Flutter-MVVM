@@ -1,4 +1,6 @@
 import 'package:e_commerce_mvvm/viewmodels/auth_viewmodel.dart';
+import 'package:e_commerce_mvvm/viewmodels/product_viewmodel.dart';
+import 'package:e_commerce_mvvm/views/home/home_screen.dart';
 import 'package:e_commerce_mvvm/views/user_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,6 +42,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   AuthViewModel authViewModel = Get.find<AuthViewModel>();
+  ProductViewModel productViewModel = Get.find<ProductViewModel>();
 
   void _incrementCounter() {
     setState(() {
@@ -48,7 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   init() async {
-    await authViewModel.findUser();
+    productViewModel.update();
+    Get.to(() => HomeScreen());
   }
 
   @override
@@ -91,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   'You have pushed the button this many times:',
                 ),
                 Text(
-                  '${authViewModel.userModel.apiToken}',
+                  '',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
