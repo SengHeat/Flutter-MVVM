@@ -19,7 +19,7 @@ class ProductRepository {
 
   Future<PaginationData<ProductModel>> getAll({int page = 1}) async {
     try {
-      final response = await dioClient.getData(AppConstants.getAllProduct);
+      final response = await dioClient.getData(AppConstants.token);
       if(response.data['status'] == 200) {
         // Assuming you have a response object that contains the list of products.
         PaginationData<ProductModel> products = PaginationData<ProductModel>.fromJson(
@@ -37,7 +37,7 @@ class ProductRepository {
 
   Future<ProductModel> findOne() async {
     try  {
-      final response = await dioClient.getData(AppConstants.getAllProduct);
+      final response = await dioClient.getData(AppConstants.token);
       if(response.data['status'] == 200) {
         ProductModel product = ProductModel.fromJson(response.data['data']);
         return product;
@@ -51,7 +51,7 @@ class ProductRepository {
 
   Future<StatusRequest> saveUnSaveProduct(ProductModel productModel) async {
     try {
-      final response = await dioClient.postData(AppConstants.getCourse, productModel.toSaveUnSaveJson());
+      final response = await dioClient.postData(AppConstants.token, productModel.toSaveUnSaveJson());
       if(response.data['status'] == 200) {
         return StatusRequest.success;
       } else {

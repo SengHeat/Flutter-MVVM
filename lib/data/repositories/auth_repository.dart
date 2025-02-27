@@ -17,7 +17,7 @@ class AuthRepository {
 
   Future<UserModel> findUser() async {
     try {
-      final response = await dioClient.getData(AppConstants.userProfile);
+      final response = await dioClient.getData(AppConstants.token);
       if (response.data['status'].toString() == "200") {
         UserModel user = UserModel.fromJson(response.data['data']);
         return user;
@@ -33,7 +33,7 @@ class AuthRepository {
 
     XFile? imageFile = userModel.imageFile;
     if(imageFile == null) {
-      return dioClient.postData(AppConstants.register, userModel.toJsonRegister())
+      return dioClient.postData(AppConstants.token, userModel.toJsonRegister())
           .then((value) {
         if (value.data['status'] == 200) {
           return UserModel.fromJson(value.data['data']);
@@ -44,7 +44,7 @@ class AuthRepository {
         throw Exception("Error during login: $error");
       });
     } else {
-      return dioClient.postMultipartData(AppConstants.login, userModel.toJsonRegister(), [MultipartBody('image', imageFile)])
+      return dioClient.postMultipartData(AppConstants.token, userModel.toJsonRegister(), [MultipartBody('image', imageFile)])
           .then((value) {
         if (value.data['status'] == 200) {
           return UserModel.fromJson(value.data['data']);
@@ -58,7 +58,7 @@ class AuthRepository {
   }
 
   Future<UserModel> login(UserModel userModel) {
-    return dioClient.postData(AppConstants.login, userModel.toJsonLogin())
+    return dioClient.postData(AppConstants.token, userModel.toJsonLogin())
         .then((value) {
       if (value.data['status'] == 200) {
         if(value.data['data']['token'] != null) {

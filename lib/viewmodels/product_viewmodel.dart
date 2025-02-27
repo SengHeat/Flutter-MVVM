@@ -12,8 +12,10 @@ class ProductViewModel extends GetxController {
   ProductViewModel({required this.productRepository, required this.sharedPreferences});
 
   final List<ProductModel> _productModelList = <ProductModel>[];
+  final List<ProductModel> _productLikeModelList = <ProductModel>[];
   ProductModel _productModelDetail = ProductModel();
   List<ProductModel> get productModelList => _productModelList;
+  List<ProductModel> get productLikeModelList => _productLikeModelList;
   ProductModel get productModelDetail => _productModelDetail;
   StatusRequest statusGetDetail = StatusRequest.loading;
   StatusRequest statusGetAll = StatusRequest.loading;
@@ -39,10 +41,11 @@ class ProductViewModel extends GetxController {
     for (int i = 0; i < _productModelList.length; i++) {
       if (_productModelList[i].id == productModel.id) {
         _productModelList[i] = productModel;
-        update();
         break;
       }
     }
+    _productLikeModelList.removeWhere((element) => element.id == productModel.id);
+    update();
   }
 
   Future<void> getAllProduct({bool refresh = false}) async {
@@ -91,21 +94,21 @@ class ProductViewModel extends GetxController {
 
   Future<void> saveUnSaveProduct(ProductModel productModel) async {
     statusPostSave = StatusRequest.loading;
+    productModel.isFeatured = !productModel.isFeatured;
     update();
     await productRepository.saveUnSaveProduct(productModel)
         .then((value) {
-          if(value == StatusRequest.success) {
-            productModel.isFeatured = !productModel.isFeatured;
-            _setUpdateProduct(productModel);
-            statusPostSave = StatusRequest.success;
-          } else {
-            statusPostSave = StatusRequest.error;
-          }
+      if(value == StatusRequest.success) {
+        _setUpdateProduct(productModel);
+        statusPostSave = StatusRequest.success;
+      } else {
+        statusPostSave = StatusRequest.error;
+      }
     }).catchError((error){
       statusPostSave = StatusRequest.error;
-    })
-        .whenComplete(() => update()
-    );
+    }).whenComplete(() => update());
   }
+
+
 
 }
